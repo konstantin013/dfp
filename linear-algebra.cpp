@@ -11,7 +11,7 @@
 
 
 void Matrix::print() {
-    for (const auto &v: A) {
+    for (const auto &v: data) {
         for (double d: v) {
             std::cout << d << ' ';
         }
@@ -20,14 +20,14 @@ void Matrix::print() {
 }
 
 Matrix::Matrix(int m, int n, double d): m(m), n(n) {
-    A.resize(m, std::vector<double>(n, d));
+    data.resize(m, std::vector<double>(n, d));
 }
 
 Matrix Matrix::transpose() {
     Matrix B(n, m);
     for (unsigned int r = 0; r < m; ++r) {
         for (unsigned int c = 0; c < n; ++c) {
-            B.A[c][r] = A[r][c];
+            B.data[c][r] = data[r][c];
         }
     }
 
@@ -35,8 +35,30 @@ Matrix Matrix::transpose() {
 }
 
 Matrix::Matrix(const Point &v): m(v.size()), n(1) {
-    A.resize(v.size());
+    data.resize(v.size());
     for (int r = 0; r < m; ++r) {
-        A[r].resize(1, v[r]);
+        data[r].resize(1, v[r]);
     }
+}
+
+Matrix operator+(const Matrix &A, const Matrix &B) {
+    Matrix C(A.m, A.n);
+
+    for (int r = 0; r < A.m; ++r) {
+        for (int c = 0; c < A.n; ++c) {
+            C.data[r][c] = A.data[r][c] + B.data[r][c];
+        }
+    }
+    return C;
+}
+
+Matrix operator-(const Matrix &A, const Matrix &B) {
+    Matrix C(A.m, A.n);
+
+    for (int r = 0; r < A.m; ++r) {
+        for (int c = 0; c < A.n; ++c) {
+            C.data[r][c] = A.data[r][c] - B.data[r][c];
+        }
+    }
+    return C;
 }

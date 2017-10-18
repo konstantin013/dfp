@@ -15,7 +15,7 @@ class Matrix
 public:
     int m, n;
 
-    std::vector<std::vector<double> > A;
+    std::vector<std::vector<double> > data;
     Matrix(int m = 2, int n = 2, double d = 0.0);
     Matrix(const Point &v);
     void print();
@@ -23,7 +23,8 @@ public:
 
 };
 
-
+Matrix operator +(const Matrix &A, const Matrix &B);
+Matrix operator -(const Matrix &A, const Matrix &B);
 
 
 
