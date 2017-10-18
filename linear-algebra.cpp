@@ -41,12 +41,20 @@ Matrix::Matrix(const Point &v): m(v.size()), n(1) {
     }
 }
 
+std::vector<double> &Matrix::operator[](int i){
+    return data[i];
+}
+
+const std::vector<double> &Matrix::operator[](int i) const {
+    return data[i];
+}
+
 Matrix operator+(const Matrix &A, const Matrix &B) {
     Matrix C(A.m, A.n);
 
     for (int r = 0; r < A.m; ++r) {
         for (int c = 0; c < A.n; ++c) {
-            C.data[r][c] = A.data[r][c] + B.data[r][c];
+            C[r][c] = A[r][c] + B[r][c];
         }
     }
     return C;
@@ -57,8 +65,27 @@ Matrix operator-(const Matrix &A, const Matrix &B) {
 
     for (int r = 0; r < A.m; ++r) {
         for (int c = 0; c < A.n; ++c) {
-            C.data[r][c] = A.data[r][c] - B.data[r][c];
+            C[r][c] = A[r][c] - B[r][c];
         }
     }
     return C;
 }
+
+
+
+Matrix operator*(const Matrix &A, const Matrix &B) {
+    Matrix C(A.m, B.n);
+
+    for (int i = 0; i < C.m; ++i) {
+        for (int j = 0; j < C.n; ++j) {
+            for (int k = 0; k < A.n; ++k) {
+                std::cout << "pos " << i << ' ' << k << ' ' << j << std::endl;
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    return C;
+}
+
+
+
