@@ -7,6 +7,9 @@
 
 #include <vector>
 
+typedef  std::vector<double> Point;
+
+
 class Matrix
 {
 public:
@@ -14,10 +17,12 @@ public:
 
     std::vector<std::vector<double> > A;
     Matrix(int m = 2, int n = 2, double d = 0.0);
+    Matrix(const Point &v);
     void print();
     Matrix transpose();
 
 };
+
 
 
 

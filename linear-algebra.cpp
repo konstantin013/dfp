@@ -33,3 +33,10 @@ Matrix Matrix::transpose() {
 
     return B;
 }
+
+Matrix::Matrix(const Point &v): m(v.size()), n(1) {
+    A.resize(v.size());
+    for (int r = 0; r < m; ++r) {
+        A[r].resize(1, v[r]);
+    }
+}
