@@ -24,6 +24,9 @@ public:
 
     Matrix(int m = 2, int n = 2, double d = 0.0);
     Matrix(const Point &v);
+
+    Matrix(std::initializer_list< std::initializer_list<double> > l);
+
     void print();
     Matrix transpose();
 

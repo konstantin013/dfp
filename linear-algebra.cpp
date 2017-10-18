@@ -49,6 +49,15 @@ const std::vector<double> &Matrix::operator[](int i) const {
     return data[i];
 }
 
+Matrix::Matrix(std::initializer_list<std::initializer_list<double> > l) {
+    m = l.size();
+    n = l.begin()->size();
+
+    for (const auto &i: l) {
+        data.emplace_back(std::vector<double>(i.begin(), i.end()));
+    }
+}
+
 Matrix operator+(const Matrix &A, const Matrix &B) {
     Matrix C(A.m, A.n);
 
