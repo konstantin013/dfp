@@ -124,6 +124,28 @@ Matrix operator*(double alpha, const Matrix &A) {
     return B;
 }
 
+Point &operator*=(Point &p, double alpha) {
+    for (double &v: p) {
+        p *= alpha;
+    }
+
+    return p;
+}
+
+Point operator*(const Point &p, double alpha) {
+    Point r = p;
+    r *= alpha;
+
+    return r;
+}
+
+Point operator*(double alpha, const Point &p) {
+    Point r = p;
+    r *= alpha;
+
+    return r;
+}
+
 
 
 

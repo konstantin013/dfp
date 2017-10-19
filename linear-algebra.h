@@ -41,5 +41,9 @@ Matrix& operator *=(Matrix &A, double alpha);
 Matrix operator *(const Matrix &A, double alpha);
 Matrix operator *(double alpha, const Matrix &A);
 
+Point& operator *=(Point &p, double alpha);
+Point operator *(const Point &p, double alpha);
+Point operator *(double alpha, const Point &p);
+
 
 #endif //DFP_LINEAR_ALGEBRA_H
