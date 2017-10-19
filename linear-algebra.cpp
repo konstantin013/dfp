@@ -175,6 +175,25 @@ Point operator-(const Point &a, const Point &b) {
     return c;
 }
 
+std::ostream &operator<<(std::ostream &os, const Point &p) {
+    for (double v: p) {
+        os << v << ' ';
+    }
+
+    return os;
+}
+
+std::ostream &operator<<(std::ostream &os, const Matrix &A) {
+    for (const auto &i: A.data) {
+        for (const auto &v: i) {
+            os << v << ' ';
+        }
+
+        os << std::endl;
+    }
+
+    return os;
+}
 
 
 

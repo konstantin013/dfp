@@ -51,5 +51,7 @@ Point operator +(const Point &a, const Point &b);
 Point operator -=(Point &a, const Point &b);
 Point operator -(const Point &a, const Point &b);
 
+std::ostream &operator<<(std::ostream &os, const Point &p);
+std::ostream &operator<<(std::ostream &os, const Matrix &A);
 
 #endif //DFP_LINEAR_ALGEBRA_H
