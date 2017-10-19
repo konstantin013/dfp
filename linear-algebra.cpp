@@ -98,3 +98,34 @@ Matrix operator*(const Matrix &A, const Matrix &B) {
 
 
 
+Matrix &operator*=(Matrix &A, double alpha) {
+    for (int r = 0; r < A.m; ++r) {
+        for (int c = 0; c < A.n; ++c) {
+            A[r][c] *= alpha;
+        }
+    }
+
+    return A;
+}
+
+
+
+Matrix operator*(const Matrix &A, double alpha) {
+    Matrix B = A;
+    B *= alpha;
+
+    return B;
+}
+
+Matrix operator*(double alpha, const Matrix &A) {
+    Matrix B = A;
+    B *= alpha;
+
+    return B;
+}
+
+
+
+
+
+
