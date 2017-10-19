@@ -146,6 +146,35 @@ Point operator*(double alpha, const Point &p) {
     return r;
 }
 
+Point &operator+=(Point &a, const Point &b) {
+    for (int i = 0; i < a.size(); ++i) {
+        a[i] += b[i];
+    }
+
+    return a;
+}
+
+Point operator+(const Point &a, const Point &b) {
+    Point c = a;
+    c += b;
+    return c;
+}
+
+Point operator-=(Point &a, const Point &b) {
+    for (int i = 0; i < a.size(); ++i) {
+        a[i] -= b[i];
+    }
+
+    return a;
+}
+
+Point operator-(const Point &a, const Point &b) {
+    Point c = a;
+    c -= b;
+
+    return c;
+}
+
 
 
 

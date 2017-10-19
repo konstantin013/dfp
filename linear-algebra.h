@@ -45,5 +45,11 @@ Point& operator *=(Point &p, double alpha);
 Point operator *(const Point &p, double alpha);
 Point operator *(double alpha, const Point &p);
 
+Point& operator +=(Point &a, const Point &b);
+Point operator +(const Point &a, const Point &b);
+
+Point operator -=(Point &a, const Point &b);
+Point operator -(const Point &a, const Point &b);
+
 
 #endif //DFP_LINEAR_ALGEBRA_H
