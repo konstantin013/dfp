@@ -125,7 +125,7 @@ Matrix operator*(double alpha, const Matrix &A) {
 
 Point &operator*=(Point &p, double alpha) {
     for (double &v: p) {
-        p *= alpha;
+        v *= alpha;
     }
 
     return p;
