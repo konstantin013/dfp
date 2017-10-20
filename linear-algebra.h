@@ -61,4 +61,6 @@ Point operator -(const Point&);
 std::ostream &operator<<(std::ostream &os, const Point &p);
 std::ostream &operator<<(std::ostream &os, const Matrix &A);
 
+double scalar_product(const Point &, const Point &);
+
 #endif //DFP_LINEAR_ALGEBRA_H

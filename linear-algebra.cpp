@@ -214,6 +214,16 @@ Point operator-(const Point &A) {
     return (-1) * A;
 }
 
+double scalar_product(const Point &a, const Point &b) {
+    double res = 0;
+
+    for (int i = 0; i < a.size(); ++i) {
+        res += a[i] * b[i];
+    }
+
+    return res;
+}
+
 
 
 
