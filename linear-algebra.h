@@ -62,6 +62,10 @@ Point operator +(const Point &a, const Point &b);
 Point operator -=(Point &a, const Point &b);
 Point operator -(const Point &a, const Point &b);
 
+Matrix& operator +=(Matrix &A, const Matrix &B);
+Matrix& operator -=(Matrix &A, const Matrix &B);
+
+
 Matrix operator -(const Matrix&);
 Point operator -(const Point&);
 

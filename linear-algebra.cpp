@@ -240,6 +240,22 @@ Point operator/(const Point &A, double alpha) {
     return A * (1 / alpha);
 }
 
+Matrix &operator+=(Matrix &A, const Matrix &B) {
+    for (int i = 0; i < A.data.size(); ++i) {
+        A.data[i] += B.data[i];
+    }
+
+    return A;
+}
+
+Matrix &operator-=(Matrix &A, const Matrix &B) {
+    for (int i = 0; i < A.data.size(); ++i) {
+        A.data[i] -= B.data[i];
+    }
+
+    return A;
+}
+
 
 
 
