@@ -55,6 +55,9 @@ Point operator +(const Point &a, const Point &b);
 Point operator -=(Point &a, const Point &b);
 Point operator -(const Point &a, const Point &b);
 
+Matrix operator -(const Matrix&);
+Point operator -(const Point&);
+
 std::ostream &operator<<(std::ostream &os, const Point &p);
 std::ostream &operator<<(std::ostream &os, const Matrix &A);
 

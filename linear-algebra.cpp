@@ -206,6 +206,14 @@ std::ostream &operator<<(std::ostream &os, const Matrix &A) {
     return os;
 }
 
+Matrix operator-(const Matrix &A) {
+    return (-1) * A;
+}
+
+Point operator-(const Point &A) {
+    return (-1) * A;
+}
+
 
 
 
