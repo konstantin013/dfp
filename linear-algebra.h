@@ -6,6 +6,7 @@
 #define DFP_LINEAR_ALGEBRA_H
 
 #include <vector>
+#include <iostream>
 
 typedef  std::vector<double> Point;
 

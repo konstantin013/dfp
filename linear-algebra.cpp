@@ -4,7 +4,6 @@
 
 
 #include <vector>
-#include <iostream>
 #include "linear-algebra.h"
 
 
