@@ -45,9 +45,16 @@ Matrix& operator *=(Matrix &A, double alpha);
 Matrix operator *(const Matrix &A, double alpha);
 Matrix operator *(double alpha, const Matrix &A);
 
+
 Point& operator *=(Point &p, double alpha);
 Point operator *(const Point &p, double alpha);
 Point operator *(double alpha, const Point &p);
+
+Matrix& operator /=(Matrix &A, double alpha);
+Matrix operator /(const Matrix &, double);
+
+Point& operator /=(Point &A, double alpha);
+Point operator /(const Point &A, double alpha);
 
 Point& operator +=(Point &a, const Point &b);
 Point operator +(const Point &a, const Point &b);

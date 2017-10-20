@@ -224,6 +224,22 @@ double scalar_product(const Point &a, const Point &b) {
     return res;
 }
 
+Matrix &operator/=(Matrix &A, double alpha) {
+    return A *= (1 / alpha);
+}
+
+Matrix operator/(const Matrix &A, double alpha) {
+    return A * (1 / alpha);
+}
+
+Point &operator/=(Point &A, double alpha) {
+    return A *= (1 / alpha);
+}
+
+Point operator/(const Point &A, double alpha) {
+    return A * (1 / alpha);
+}
+
 
 
 
