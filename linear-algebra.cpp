@@ -60,6 +60,15 @@ Matrix::Matrix(std::initializer_list<std::initializer_list<double> > l) {
     }
 }
 
+Matrix::operator Point() const {
+    Point A(data.size());
+    for (int i = 0; i < A.size(); ++i) {
+        A[i] = data[i][0];
+    }
+
+    return A;
+}
+
 Matrix operator+(const Matrix &A, const Matrix &B) {
     Matrix C(A.m, A.n);
 
@@ -89,8 +98,8 @@ Matrix operator*(const Matrix &A, const Matrix &B) {
 
     for (int i = 0; i < C.m; ++i) {
         for (int j = 0; j < C.n; ++j) {
+            C[i][j] = 0;
             for (int k = 0; k < A.n; ++k) {
-                std::cout << "pos " << i << ' ' << k << ' ' << j << std::endl;
                 C[i][j] += A[i][k] * B[k][j];
             }
         }

@@ -1,18 +1,17 @@
 #include <iostream>
 #include "linear-algebra.h"
 
+using  namespace std;
+
 int main() {
 
-    Point A{1, 4, 2};
+    Matrix A{{1, 2, 3},
+             {4, 5, 6},
+             {7, 8, 9}};
 
-    std::cout << A << std::endl;
+    Point x{1, 2, 3};
 
-    Matrix B{{1, 6, 3},
-             {3, 12, 6}};
-
-    std::cout << B << std::endl;
+    cout << Point(A * x) << endl;
 
 
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
 }

@@ -33,6 +33,7 @@ public:
     void print();
     Matrix transpose();
 
+    operator Point() const;
 };
 
 Matrix operator +(const Matrix &A, const Matrix &B);
