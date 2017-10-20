@@ -23,7 +23,9 @@ public:
 
 
 
-    Matrix(int m = 2, int n = 2, double d = 0.0);
+    Matrix(int m, int n);
+    //create matrix with 1 in main diagonal and 0 else
+
     Matrix(const Point &v);
 
     Matrix(std::initializer_list< std::initializer_list<double> > l);

@@ -18,8 +18,11 @@ void Matrix::print() {
     }
 }
 
-Matrix::Matrix(int m, int n, double d): m(m), n(n) {
-    data.resize(m, std::vector<double>(n, d));
+Matrix::Matrix(int m, int n): m(m), n(n) {
+    data.resize(m, std::vector<double>(n, 0));
+    for (int i = 0; i < n && i < m; ++i) {
+        data[i][i] = 1;
+    }
 }
 
 Matrix Matrix::transpose() {
