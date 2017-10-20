@@ -1,17 +1,40 @@
 #include <iostream>
 #include "linear-algebra.h"
+#include "function.h"
+#include "dfp.h"
 
 using  namespace std;
 
-int main() {
+double
+f(const Point &p)
+{
+    double x = p[0];
+    double y = p[1];
 
-    Matrix A{{1, 2, 3},
-             {4, 5, 6},
-             {7, 8, 9}};
+    return x * x * x * x + y * y;
+}
 
-    Point x{1, 2, 3};
+Point
+df(const Point &p)
+{
+    double x = p[0];
+    double y = p[1];
 
-    cout << Point(A * x) << endl;
+    return  Point{4 * x * x * x, 2 * y};
+}
+
+double
+one_dim_search(Function f, Point x, Point d)
+{
+    return 0.0001;
+}
 
 
+
+int main()
+{
+    Function func(f, df);
+    Point x0{153, 327};
+
+    dfp(func, x0, one_dim_search);
 }

@@ -11,6 +11,6 @@
 typedef double (*One_dim_search)(Function f, Point x, Point d);
 
 Point
-dfp(Function f, Point x0, One_dim_search s);
+dfp(Function f, Point x0, One_dim_search one_dim_search);
 
 #endif //DFP_DFP_H
