@@ -4,7 +4,7 @@
 
 #include "dfp.h"
 
-Point dfp(Function f, Point x0, One_dim_search one_dim_search) {
+Point dfp(const Function &f, Point x0, One_dim_search one_dim_search) {
     int n = x0.size();
     Matrix Q0(n, n);
 

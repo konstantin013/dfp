@@ -8,9 +8,9 @@
 #include "linear-algebra.h"
 #include "function.h"
 
-typedef double (*One_dim_search)(Function f, Point x, Point d);
+typedef double (*One_dim_search)(const Function &f, const Point &x, const Point &d);
 
 Point
-dfp(Function f, Point x0, One_dim_search one_dim_search);
+dfp(const Function &f, Point x0, One_dim_search one_dim_search);
 
 #endif //DFP_DFP_H

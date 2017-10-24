@@ -24,7 +24,7 @@ df(const Point &p)
 }
 
 double
-one_dim_search(Function f, Point x, Point d)
+one_dim_search(const Function &f, const Point &x, const Point &d)
 {
     return 0.0001;
 }
