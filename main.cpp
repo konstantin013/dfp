@@ -2,6 +2,7 @@
 #include "linear-algebra.h"
 #include "function.h"
 #include "dfp.h"
+#include "wolfe.h"
 
 using  namespace std;
 
@@ -36,5 +37,5 @@ int main()
     Function func(f, df);
     Point x0{153, 327};
 
-    dfp(func, x0, one_dim_search);
+    dfp(func, x0, wolfe);
 }
