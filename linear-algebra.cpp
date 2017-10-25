@@ -3,7 +3,6 @@
 //
 
 
-#include <vector>
 #include "linear-algebra.h"
 
 
@@ -254,6 +253,15 @@ Matrix &operator-=(Matrix &A, const Matrix &B) {
     }
 
     return A;
+}
+
+double norm(const Point &a) {
+    double res = 0;
+    for (double v: a){
+        res += v * v;
+    }
+
+    return sqrt(res);
 }
 
 

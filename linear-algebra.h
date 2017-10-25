@@ -4,7 +4,7 @@
 
 #include <vector>
 #include <iostream>
-
+#include <cmath>
 
 #ifndef DFP_LINEAR_ALGEBRA_H
 #define DFP_LINEAR_ALGEBRA_H
@@ -75,5 +75,7 @@ std::ostream &operator<<(std::ostream &os, const Point &p);
 std::ostream &operator<<(std::ostream &os, const Matrix &A);
 
 double scalar_product(const Point &, const Point &);
+double norm(const Point &a);
+
 
 #endif //DFP_LINEAR_ALGEBRA_H
