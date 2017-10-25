@@ -10,7 +10,7 @@ Point dfp(const Function &f, Point x0, One_dim_search one_dim_search) {
 
     std::cout << x0 << std::endl;
 
-    for (int i = 0; i < 1000000; ++i) {
+    for (int i = 0; i < 10000; ++i) {
         Point d = -Q0 * f.df(x0);
         double alpha = one_dim_search(f, x0, d);
         Point x = x0 + alpha * d;
@@ -29,4 +29,29 @@ Point dfp(const Function &f, Point x0, One_dim_search one_dim_search) {
     }
 
     return x0;
+}
+
+
+double wolfe(const Function &f, const Point &x, const Point &d) {
+    double eps1 = 0.4, eps2 = 0.6;
+
+    double a1 = 0, a2 = 0, a = 1;
+
+    while (true) {
+        bool ul = f.f(x + a * d) <= f.f(x) + eps1 * a * scalar_product(f.df(x), d);
+        bool ur = scalar_product(f.df(x + a * d), d) >= eps2 * scalar_product(f.df(x), d);
+
+        if (ul && ur) {
+            return a;
+        } else if (!ul) {
+            a2 = a;
+            a = (a1 + a2) / 2;
+        } else {
+            a1 = a;
+            if (a1 == 0.0) {
+                a = a2 * 2;
+            }
+        }
+    }
+
 }

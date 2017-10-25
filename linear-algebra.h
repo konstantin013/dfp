@@ -2,11 +2,13 @@
 // Created by konstantin on 18.10.17.
 //
 
+#include <vector>
+#include <iostream>
+
+
 #ifndef DFP_LINEAR_ALGEBRA_H
 #define DFP_LINEAR_ALGEBRA_H
 
-#include <vector>
-#include <iostream>
 
 typedef  std::vector<double> Point;
 

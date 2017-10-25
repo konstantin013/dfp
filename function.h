@@ -2,12 +2,13 @@
 // Created by konstantin on 20.10.17.
 //
 
+#include <cmath>
+#include "linear-algebra.h"
+
+
 #ifndef DFP_FUNCTION_H
 #define DFP_FUNCTION_H
 
-
-#include <cmath>
-#include "linear-algebra.h"
 
 class Function {
 public:
