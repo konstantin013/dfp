@@ -5,8 +5,13 @@
 #include "wolfe.h"
 
 
-double wolfe(const Function &f, const Point &x, const Point &d) {
-    double eps1 = 0.4, eps2 = 0.6;
+
+double ::wolfe::eps1 = 0.4, ::wolfe::eps2 = 0.6;
+
+
+double ::wolfe::wolfe(const Function &f, const Point &x, const Point &d) {
+
+    static double eps1 = 0.4, eps2 = 0.6;
 
     double a1 = 0, a2 = 0, a = 1;
 

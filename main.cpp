@@ -37,7 +37,9 @@ int main()
     Function func(f, df);
     Point x0{153, 327};
 
-    dfp(func, x0, wolfe);
+
+
+    dfp(func, x0, wolfe::wolfe);
 //    dfp(func, x0, one_dim_search);
 
 
