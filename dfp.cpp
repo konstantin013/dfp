@@ -4,13 +4,13 @@
 
 #include "dfp.h"
 
-Point dfp(const Function &f, Point x0, One_dim_search one_dim_search) {
+Point dfp(const Function &f, Point x0, One_dim_search one_dim_search, double eps_stop) {
     int n = x0.size();
     Matrix Q0(n, n);
 
     std::cout << x0 << std::endl;
 
-    while (norm(f.df(x0)) >= 1e-10) {
+    while (norm(f.df(x0)) >= eps_stop) {
         Point d = -Q0 * f.df(x0);
         double alpha = one_dim_search(f, x0, d);
         Point x = x0 + alpha * d;

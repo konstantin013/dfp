@@ -13,7 +13,7 @@
 typedef double (*One_dim_search)(const Function &f, const Point &x, const Point &d);
 
 Point
-dfp(const Function &f, Point x0, One_dim_search one_dim_search);
+dfp(const Function &f, Point x0, One_dim_search one_dim_search, double eps_stop);
 
 
 

@@ -12,7 +12,7 @@ f(const Point &p)
     double x = p[0];
     double y = p[1];
 
-    return x * x * x * x + y * y;
+    return x * x * x * x + y * y + (2 * x - y) * (2 * x - y);
 }
 
 Point
@@ -21,7 +21,7 @@ df(const Point &p)
     double x = p[0];
     double y = p[1];
 
-    return  Point{4 * x * x * x, 2 * y};
+    return  Point{4 * x * x * x + 4 * (2 * x - y), 2 * y + 2 * (y - 2 * x)};
 }
 
 double
@@ -40,8 +40,10 @@ int main()
 
     wolfe::eps1 = 0.7;
     wolfe::eps2 = 0.9;
+    double eps_stop = 1e-20;
 
-    dfp(func, x0, wolfe::wolfe);
+
+    dfp(func, x0, wolfe::wolfe, eps_stop);
 
     cout << "the end" << endl;
 }
