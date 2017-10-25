@@ -2,6 +2,7 @@
 #include "linear-algebra.h"
 #include "function.h"
 #include "dfp.h"
+#include "wolfe.h"
 
 using  namespace std;
 
