@@ -10,7 +10,7 @@ Point dfp(const Function &f, Point x0, One_dim_search one_dim_search) {
 
     std::cout << x0 << std::endl;
 
-    for (int i = 0; i < 10000; ++i) {
+    while (norm(f.df(x0)) >= 1e-10) {
         Point d = -Q0 * f.df(x0);
         double alpha = one_dim_search(f, x0, d);
         Point x = x0 + alpha * d;
@@ -28,6 +28,8 @@ Point dfp(const Function &f, Point x0, One_dim_search one_dim_search) {
         x0 = x;
     }
 
+
+    std::cout << "result gradient is " << f.df(x0) << std::endl;
     return x0;
 }
 
