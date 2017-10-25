@@ -38,10 +38,10 @@ int main()
     Point x0{153, 327};
 
 
+    wolfe::eps1 = 0.7;
+    wolfe::eps2 = 0.9;
 
     dfp(func, x0, wolfe::wolfe);
-//    dfp(func, x0, one_dim_search);
-
 
     cout << "the end" << endl;
 }
