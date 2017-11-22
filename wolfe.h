@@ -10,6 +10,8 @@
 namespace  wolfe {
     extern  double eps1, eps2;
     double wolfe(const Function &f, const Point &x, const Point &d);
+    inline bool ul(const Function &f, const Point &x, const Point &d, double a);
+    inline bool ur(const Function &f, const Point &x, const Point &d, double a);
 }
 
 
