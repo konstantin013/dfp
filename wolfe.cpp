@@ -7,6 +7,7 @@
 
 
 double ::wolfe::eps1, ::wolfe::eps2;
+double ::wolfe::a_ub = 10000;
 
 bool
 ::wolfe::ur(const Function &f, const Point &x, const Point &d, double a) {
@@ -22,9 +23,13 @@ double ::wolfe::wolfe(const Function &f, const Point &x, const Point &d) {
 
     double a2 = 1;
 
-    while (!ul(f, x, d, a2)) {
+    while (!ul(f, x, d, a2) && a2 < a_ub) {
         a2 *= 2;
     }
+    if (a2 >= a_ub) {
+        return -1;
+    }
+
     if (ur(f, x, d, a2)) {
         return a2;
     }

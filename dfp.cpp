@@ -13,8 +13,13 @@ Point dfp(const Function &f, Point x0, One_dim_search one_dim_search, double eps
     while (norm(f.df(x0)) >= eps_stop) {
         Point d = -Q0 * f.df(x0);
         double alpha = one_dim_search(f, x0, d);
-        Point x = x0 + alpha * d;
 
+        if (alpha == -1) {
+            std::cout << "can't make step by wolfe rule" << std::endl;
+            return x0;
+        }
+
+        Point x = x0 + alpha * d;
 
         Point r = x - x0;
         Point s = f.df(x) - f.df(x0);
