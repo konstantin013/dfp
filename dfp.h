@@ -10,10 +10,10 @@
 #ifndef DFP_DFP_H
 #define DFP_DFP_H
 
-typedef double (*One_dim_search)(const Function &f, const Point &x, const Point &d);
+typedef double (*One_dim_search)(const Pfunction &f, const Point &x, const Point &d);
 
 Point
-dfp(const Function &f, Point x0, One_dim_search one_dim_search, double eps_stop);
+dfp(const Pfunction &f, Point x0, One_dim_search one_dim_search, double eps_stop);
 
 
 
