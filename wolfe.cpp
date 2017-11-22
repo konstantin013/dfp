@@ -23,10 +23,15 @@ double ::wolfe::wolfe(const Pfunction &f, const Point &x, const Point &d) {
 
     double a2 = 1;
 
-    while (!ul(f, x, d, a2) && a2 < a_ub) {
+
+    int cnt = 0;
+    int max_op = 100000;
+
+    while (!ul(f, x, d, a2) && cnt < max_op) {
+        ++cnt;
         a2 *= 2;
     }
-    if (a2 >= a_ub) {
+    if (cnt >= max_op) {
         return -1;
     }
 
@@ -35,7 +40,9 @@ double ::wolfe::wolfe(const Pfunction &f, const Point &x, const Point &d) {
     }
 
     double a1 = 0;
-    while (true) {
+    cnt = 0;
+    while (cnt < max_op) {
+        ++cnt;
         double a = (a1 + a2) / 2;
         if (ul(f, x, d, a)) {
             if (ur(f, x, d, a)) {
@@ -47,6 +54,8 @@ double ::wolfe::wolfe(const Pfunction &f, const Point &x, const Point &d) {
             a1 = a;
         }
     }
+
+    return -2;
 }
 
 

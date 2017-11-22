@@ -16,6 +16,10 @@ Point
 dfp(const Pfunction &f, Point x0, One_dim_search one_dim_search, double eps_stop);
 
 
+Point
+penalty_dfp(Pfunction &f, Point x0, One_dim_search one_dim_search, double eps_stop);
+
+
 
 
 #endif //DFP_DFP_H

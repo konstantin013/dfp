@@ -5,6 +5,7 @@
 #include "dfp.h"
 
 Point dfp(const Pfunction &f, Point x0, One_dim_search one_dim_search, double eps_stop) {
+
     int n = x0.size();
     Matrix Q0(n, n);
 
@@ -14,8 +15,11 @@ Point dfp(const Pfunction &f, Point x0, One_dim_search one_dim_search, double ep
         Point d = -Q0 * f.get_df(x0);
         double alpha = one_dim_search(f, x0, d);
 
-        if (alpha == -1) {
-            std::cout << "can't make step by wolfe rule" << std::endl;
+        if (alpha < -1) {
+            std::cout << "can't make step by wolfe rule\n";
+            if (alpha == -1) {
+                std::cout << "can't find a2\n";
+            }
             return x0;
         }
 
@@ -36,5 +40,23 @@ Point dfp(const Pfunction &f, Point x0, One_dim_search one_dim_search, double ep
 
     std::cout << "result gradient is " << f.get_df(x0) << std::endl;
     return x0;
+}
+
+
+Point
+penalty_dfp(Pfunction &f, Point x0, One_dim_search one_dim_search, double eps_stop)
+{
+
+    for (; ; f.c = f.c + 1) {
+        std::cout << "c = " << f.c << std::endl;
+        std::cout << "go dfp" << std::endl;
+        Point x1 = dfp(f, x0, one_dim_search, eps_stop);
+        if (norm(x1 - x0) < eps_stop && f.c > 1000000) {
+            return x1;
+        }
+
+        std::cout << "dfp return " << x1 << std::endl;
+        x0 = x1;
+    }
 }
 
