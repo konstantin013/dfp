@@ -6,6 +6,7 @@
 #define DFP_WOLFE_H
 
 #include "function.h"
+#include <unistd.h>
 
 namespace  wolfe {
     extern  double eps1, eps2, a_ub;

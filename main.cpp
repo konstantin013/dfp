@@ -6,50 +6,81 @@
 
 using  namespace std;
 
-double
-f(const Point &p)
-{
-    double x = p[0];
-    double y = p[1];
 
-    return (x - 4) * (x - 4) + (y - 7) * (y - 7);
+
+double
+f(const Point &x)
+{
+    double res = 0;
+    double s;
+    for (int i = 1; i < 6; ++i) {
+        s = x[i] - (i + 1) * x[0];
+        res += s * s * s * s;
+    }
+
+    res *= 150;
+
+    s = x[0] - 2;
+    res += s * s * s * s;
+
+    return res;
 }
 
 Point
-df(const Point &p)
+df(const Point &x)
 {
-    double x = p[0];
-    double y = p[1];
+    Point res(6);
 
-    return  Point{2 * (x - 4), 2 * (y - 7)};
+    double s =  x[0] - 2;
+    res[0] = 4 * s * s * s;
+
+    for (int i = 1; i < 6; ++i) {
+        s = (i + 1) * x[0] - x[i];
+        res[0] += 150 * 4 * s * s * s * (i + 1);
+    }
+
+    for (int i = 1; i < 6; ++i) {
+        s = x[i] - (i + 1) * x[0];
+        res[i] = 150 * 4 * s * s * s;
+    }
+
+    return res;
 }
 
 double
-p(const Point &u)
+g1(const Point &x)
 {
-    double x = u[0];
-    double y = u[1];
+    return scalar_product(x, x) - 363;
+}
 
-    double g = x * x + y * y - 1;
-    if (g <= 0) {
+double
+p(const Point &x)
+{
+    double g = g1(x);
+
+    if (g < 0) {
         return 0;
     } else {
-        return g;
+        return g * g;
     }
 }
 
 Point
-dp(const Point &u)
+dp(const Point &x)
 {
-    double x = u[0];
-    double y = u[1];
+    double g = g1(x);
 
-    if (x * x + y * y <= 1) {
-        return Point{0, 0};
+    Point res(6, 0);
+    if (g < 0) {
+        return res;
     } else {
-        return Point{2 * x, 2 * y};
+        for (int i = 0; i < 6; ++i) {
+            res[i] = 4 * x[i] * g;
+        }
+        return res;
     }
 }
+
 
 
 int main()
@@ -58,14 +89,17 @@ int main()
     Function penalty(p, dp);
     Pfunction f(func, penalty, 0);
 
-    Point x0{0, 0};
+    Point x0(6, 0);
 
     wolfe::eps1 = 0.4;
     wolfe::eps2 = 0.7;
-    double eps_stop = 1e-5;
+    double eps_stop = 1e-10;
+    double c_max = 30;
 
+    Point res = penalty_dfp(f, x0, wolfe::wolfe, eps_stop, c_max);
 
-    penalty_dfp(f, x0, wolfe::wolfe, eps_stop);
+    //Point res = dfp(f, x0, wolfe::wolfe, 1e-9);
+    cout << "g1(res): " << g1(res) << endl;
 
     cout << "the end" << endl;
 }
